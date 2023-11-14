@@ -1,0 +1,10 @@
+strl="the quick brown fox jumps over the lady dog."
+print("original vector(string)")
+print(strl)
+print("unique elements of the said vector:")
+print(unique(tolower(strl)))
+nums=c(1,2,2,3,4,4,5,6)
+print("original vector(number)")
+print(nums)
+print("unique elements of the said vector:")
+print(unique(nums))
