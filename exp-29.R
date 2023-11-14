@@ -1,0 +1,16 @@
+library(datasets)
+data(iris)
+iris_df <- iris
+dim(iris_df)
+str(iris_df)
+summary(iris_df)
+sapply(iris_df[, 1:4], sd)
+aggregate(iris_df[, 1:4], by = list(Species = iris_df$Species), FUN = mean)
+aggregate(iris_df[, 1:4], by = list(Species = iris_df$Species), FUN = sd)
+quantile(iris_df$Sepal.Length)
+quantile(iris_df$Sepal.Width)
+iris1 <- iris_df
+iris1$Sepal.Length.Cate <- cut(iris_df$Sepal.Length, breaks = quantile(iris_df$Sepal.Length), labels = c("Q1", "Q2", "Q3", "Q4"))
+aggregate(iris1[, 1:4], by = list(Species = iris1$Species, Sepal.Length.Cate = iris1$Sepal.Length.Cate), FUN = mean)
+aggregate(iris1[, 1:4], by = list(Species = iris1$Species, Sepal.Length.Cate = iris1$Sepal.Length.Cate), FUN = function(x) mean(x, na.rm = TRUE))
+pivot_table <- table(iris1$Species, iris1$Sepal.Length.Cate)
